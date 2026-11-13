@@ -38,7 +38,7 @@ journalctl -k -b | grep -E 'asus_ux5406|DEVS'
 | 3 | 2026-11-13 | 7.3.3-1-cachyos | PASS after `asusctl battery limit 80`: `50 28 05` after s2idle |
 | 4 | 2026-11-13 | 7.3.3-1-cachyos | MyASUS at 80%: EC reads `d0 28 05` before module write (not a valid limit) |
 | 4b | 2026-11-13 | 7.3.3-1-cachyos | `use_myasus_flags=1`, write 80: EC reads `64 38 05` (100%, no limit). Flag option removed in 1.1.2 |
-| 5 | 2026-11-13 | 7.3.3-1-cachyos | PASS: charging from 78% at 15 W; at 80% (20:26:38) power dropped to 1.9 W then 0 W, status "Not charging", EC `50 2c 05`, charger still connected |
+| 5 | 2026-11-13 | 7.3.3-1-cachyos | PASS: charging from 78% at 15 W; at 80% (20:26:38) power dropped to 1.9 W then 0 W, status "Not charging", EC `50 2c 05`, charger still connected. Held at 80% / Not charging with the charger connected until 20:38 (log: [charge-test-2026-11-13.log](charge-test-2026-11-13.log)) |
 | 6 | | | not run |
 
 ## Notes from testing
