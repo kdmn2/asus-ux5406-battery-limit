@@ -42,7 +42,7 @@ journalctl -k -b | grep -E 'asus_ux5406|DEVS'
 | 4b | 2026-11-13 | 7.3.3-1-cachyos | `use_myasus_flags=1`, write 80: EC reads `64 38 05` (100%, no limit). Flag option removed in 1.1.2 |
 | 5 | 2026-11-13 | 7.3.3-1-cachyos | PASS: charging from 78% at 15 W; at 80% (20:26:38) power dropped to 1.9 W then 0 W, status "Not charging", EC `50 2c 05`, charger still connected. Held at 80% / Not charging with the charger connected until 20:38 (log: [charge-test-2026-11-13.log](charge-test-2026-11-13.log)) |
 | 6 | 2026-11-13 | 7.3.3-1-cachyos | PASS: hibernate at 80% (20:45). On resume the module restored 80% (`pm event 2`, POST_HIBERNATION); EC read `50 2c 05`. asusd at 80 |
-| 7 | | | not run: LTS kernel on hardware |
+| 7 | 2026-11-13 | 6.18.60-2-cachyos-lts | NOT BOOTABLE on this laptop (cause not verified; no logs from the failed boot). Module builds for it. Fallback kernel: 7.3.3-1-cachyos-bmq, module built and registered |
 
 ## Notes from testing
 
