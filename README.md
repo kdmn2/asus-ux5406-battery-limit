@@ -140,5 +140,5 @@ the same time. Both write the same EC setting.
 See [docs/FIRMWARE_NOTES.md](docs/FIRMWARE_NOTES.md) for the ACPI call chain,
 the EC mailbox protocol and the source references.
 
-Read [docs/USE_MYASUS_FLAGS.md](docs/USE_MYASUS_FLAGS.md) before enabling
-the `use_myasus_flags` parameter. It is off by default and unverified.
+Read [docs/USE_MYASUS_FLAGS.md](docs/USE_MYASUS_FLAGS.md) for why the earlier
+`use_myasus_flags` option was removed.

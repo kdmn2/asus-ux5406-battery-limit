@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.2
+
+- Removed the `use_myasus_flags` parameter. Testing showed that writing 80
+  with the flag set left the battery at 100% with no limit.
+- Documented the MyASUS test: MyASUS leaves byte 0 of the EC at `0xd0`,
+  which the module's readback check rejects.
+
 ## 1.1.1
 
 - The resume restore now logs that it ran and what the EC reads back

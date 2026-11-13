@@ -31,10 +31,6 @@ static int default_threshold = 80;
 module_param(default_threshold, int, 0644);
 MODULE_PARM_DESC(default_threshold, "Initial battery charge threshold on load: 60, 80 or 100 (default: 80)");
 
-static bool use_myasus_flags = false;
-module_param(use_myasus_flags, bool, 0644);
-MODULE_PARM_DESC(use_myasus_flags, "Use Windows MyASUS SRSC mode flags (0x80 for 80%, 0x100 for 100%)");
-
 static int cached_end_threshold = 80;
 static DEFINE_MUTEX(ux5406_lock);
 
@@ -81,7 +77,6 @@ out_free:
 
 static int __ux5406_set_threshold(int value)
 {
-	u32 ctrl_param = value;
 	u32 retval = 0;
 	int err;
 
@@ -90,20 +85,13 @@ static int __ux5406_set_threshold(int value)
 	if (!ux5406_threshold_valid(value))
 		return -EINVAL;
 
-	if (use_myasus_flags) {
-		if (value == 80)
-			ctrl_param = 0x80;
-		else if (value == 100)
-			ctrl_param = 0x0100;
-	}
-
-	err = asus_wmi_set_devstate(ASUS_WMI_DEVID_RSOC, ctrl_param, &retval);
+	err = asus_wmi_set_devstate(ASUS_WMI_DEVID_RSOC, value, &retval);
 	if (err)
 		return err;
 
 	if (retval != 1) {
 		pr_warn("asus_ux5406_battery: DEVS(0x00120057, 0x%x) returned 0x%x\n",
-			ctrl_param, retval);
+			value, retval);
 		return -EIO;
 	}
 
@@ -276,5 +264,5 @@ module_exit(ux5406_battery_exit);
 MODULE_AUTHOR("OpenCode");
 MODULE_DESCRIPTION("ASUS Zenbook S14 UX5406AA Battery Charge Threshold Driver");
 MODULE_LICENSE("GPL");
-MODULE_VERSION("1.1.1");
+MODULE_VERSION("1.1.2");
 MODULE_IMPORT_NS("ASUS_WMI");
