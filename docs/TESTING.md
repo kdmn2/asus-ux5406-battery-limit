@@ -27,6 +27,8 @@ journalctl -k -b | grep -E 'asus_ux5406|DEVS'
 5. **Charging stops at the limit**: from about 70% on AC, log `capacity`,
    `status` and `power_now` until past the limit.
 6. **LTS kernel**: boot the LTS kernel and repeat 1.
+7. **MyASUS comparison**: `./test-myasus.sh prepare`, set MyASUS, restart into
+   Linux, `./test-myasus.sh read`.
 
 ## Results (UX5406AA, BIOS 310)
 
@@ -36,11 +38,11 @@ journalctl -k -b | grep -E 'asus_ux5406|DEVS'
 | 2 | 2026-11-13 | 7.3.3-1-cachyos | PASS: 90 rejected, limit stayed 80 |
 | 3 | 2026-11-13 | 7.3.3-1-cachyos | FAIL with asusd at its default 100: module restored 60 (`3c`), asusd then wrote 100 on wake |
 | 3 | 2026-11-13 | 7.3.3-1-cachyos | PASS after `asusctl battery limit 80`: `50 28 05` after s2idle |
-| 4c | 2026-11-13 | 7.3.3-1-cachyos | PASS: hibernate at 80% (20:45); on resume the module restored 80% (`pm event 2`, POST_HIBERNATION) and the EC read `50 2c 05`. asusd at 80 |
-| 6 | | | not run (LTS kernel) |
+| 4 | 2026-11-13 | 7.3.3-1-cachyos | MyASUS at 80%: EC reads `d0 28 05` before module write (not a valid limit) |
 | 4b | 2026-11-13 | 7.3.3-1-cachyos | `use_myasus_flags=1`, write 80: EC reads `64 38 05` (100%, no limit). Flag option removed in 1.1.2 |
 | 5 | 2026-11-13 | 7.3.3-1-cachyos | PASS: charging from 78% at 15 W; at 80% (20:26:38) power dropped to 1.9 W then 0 W, status "Not charging", EC `50 2c 05`, charger still connected. Held at 80% / Not charging with the charger connected until 20:38 (log: [charge-test-2026-11-13.log](charge-test-2026-11-13.log)) |
-| 6 | | | not run |
+| 6 | 2026-11-13 | 7.3.3-1-cachyos | PASS: hibernate at 80% (20:45). On resume the module restored 80% (`pm event 2`, POST_HIBERNATION); EC read `50 2c 05`. asusd at 80 |
+| 7 | | | not run: LTS kernel on hardware |
 
 ## Notes from testing
 
