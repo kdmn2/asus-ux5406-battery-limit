@@ -44,6 +44,7 @@ journalctl -k -b | grep -E 'asus_ux5406|DEVS'
 | 6 | 2026-11-13 | 7.3.3-1-cachyos | PASS: hibernate at 80% (20:45). On resume the module restored 80% (`pm event 2`, POST_HIBERNATION); EC read `50 2c 05`. asusd at 80 |
 | 7 | 2026-11-13 | 6.18.60-2-cachyos-lts | NOT BOOTABLE on this laptop (cause not verified; no logs from the failed boot). Module builds for it. |
 | 8 | 2026-11-13 | 7.3.3-1-cachyos-bmq | PASS: booted BMQ fallback; module auto-loaded at boot (1.1.2); limit 80, EC `50 2c 05` | NOT BOOTABLE on this laptop (cause not verified; no logs from the failed boot). Module builds for it. Fallback kernel: 7.3.3-1-cachyos-bmq, module built and registered |
+| 9 | 2026-11-13 | 7.3.4-1-cachyos(-bmq) | PASS: pacman upgrade 7.3.3 -> 7.3.4; DKMS rebuilt the module automatically for both kernels; booted 7.3.4 BMQ, module 1.1.2 loaded, limit 80 |
 
 ## Notes from testing
 

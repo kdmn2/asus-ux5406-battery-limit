@@ -24,6 +24,7 @@ module calls the firmware directly, with the same EC command the BIOS uses.
 Charging stops at the limit and survives suspend and hibernate on hardware (see docs/TESTING.md).
 Tested on hardware: charging stops at 80%, the limit survives suspend and
 hibernate, and the module auto-loads on the `linux-cachyos-bmq` fallback kernel.
+DKMS rebuilt the module automatically on a kernel upgrade (7.3.3 -> 7.3.4).
 The `linux-cachyos-lts` kernel does not boot on this laptop (cause not verified),
 so it is not used. See [docs/TESTING.md](docs/TESTING.md).
 
