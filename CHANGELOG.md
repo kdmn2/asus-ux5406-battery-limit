@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.1
+
+- The resume restore now logs that it ran and what the EC reads back
+  afterwards (`pm event N, restoring X%` / `EC after restore: ...`).
+- Added `test-resume.sh` to check that the limit survives a suspend.
+- Documented the asusd interaction: asusd re-applies its own stored limit
+  (default 100) on every wake. Set it with `asusctl battery limit 80`.
+
 ## 1.1.0
 
 - Writes that the firmware does not confirm (`DEVS` result other than 1) now

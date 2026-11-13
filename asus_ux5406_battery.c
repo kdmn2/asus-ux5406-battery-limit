@@ -225,13 +225,19 @@ static int ux5406_pm_notify(struct notifier_block *nb,
 	case PM_POST_HIBERNATION:
 	case PM_POST_SUSPEND:
 	case PM_POST_RESTORE: {
+		u8 ec_buf[3] = { 0 };
 		int err;
 
 		guard(mutex)(&ux5406_lock);
+		pr_info("asus_ux5406_battery: pm event %lu, restoring %d%%\n",
+			mode, cached_end_threshold);
 		err = __ux5406_set_threshold(cached_end_threshold);
 		if (err)
 			pr_warn("asus_ux5406_battery: failed to restore threshold %d%% after resume: %d\n",
 				cached_end_threshold, err);
+		if (ux5406_ec_read_rsoc(ec_buf) == 0)
+			pr_info("asus_ux5406_battery: EC after restore: %02x %02x %02x\n",
+				ec_buf[0], ec_buf[1], ec_buf[2]);
 		break;
 	}
 	default:
@@ -270,5 +276,5 @@ module_exit(ux5406_battery_exit);
 MODULE_AUTHOR("OpenCode");
 MODULE_DESCRIPTION("ASUS Zenbook S14 UX5406AA Battery Charge Threshold Driver");
 MODULE_LICENSE("GPL");
-MODULE_VERSION("1.1.0");
+MODULE_VERSION("1.1.1");
 MODULE_IMPORT_NS("ASUS_WMI");
