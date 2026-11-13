@@ -21,7 +21,7 @@ module calls the firmware directly, with the same EC command the BIOS uses.
 | 1.0.0   | yes   | 80% set, EC reads back `50 2c 05` |
 | 1.1.2   | yes (7.3.3 clang, 6.18 LTS gcc) | set/readback for 60/80/100, invalid values rejected, limit survives s2idle suspend (with asusd set to 80), charging stops at 80% |
 
-Charging stops at the limit on hardware (80%, see test 5 in TESTING.md).
+Charging stops at the limit and survives suspend and hibernate on hardware (see docs/TESTING.md).
 Not yet tested: hibernate and the LTS kernel on hardware. See [docs/TESTING.md](docs/TESTING.md).
 
 ## Requirements
