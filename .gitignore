@@ -1,0 +1,22 @@
+# Build products
+*.ko
+*.o
+*.mod
+*.mod.c
+*.cmd
+.*.cmd
+.tmp_*
+Module.symvers
+modules.order
+
+# Raw firmware dumps (ASUS firmware; not redistributed)
+DSDT
+DSDT.dsl
+SSDT[0-9]*
+*.aml
+
+# Editor / OS
+.vscode/
+.idea/
+*~
+.DS_Store
