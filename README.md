@@ -22,9 +22,10 @@ module calls the firmware directly, with the same EC command the BIOS uses.
 | 1.1.2   | yes (7.3.3 clang, 6.18 LTS gcc) | set/readback for 60/80/100, invalid values rejected, limit survives s2idle suspend (with asusd set to 80), charging stops at 80% |
 
 Charging stops at the limit and survives suspend and hibernate on hardware (see docs/TESTING.md).
-Not yet tested: the LTS kernel on hardware (the LTS kernel does not boot on
-this laptop). A fallback kernel, `linux-cachyos-bmq`, is installed and has the
-module built for it. See [docs/TESTING.md](docs/TESTING.md).
+Tested on hardware: charging stops at 80%, the limit survives suspend and
+hibernate, and the module auto-loads on the `linux-cachyos-bmq` fallback kernel.
+The `linux-cachyos-lts` kernel does not boot on this laptop (cause not verified),
+so it is not used. See [docs/TESTING.md](docs/TESTING.md).
 
 ## Requirements
 
