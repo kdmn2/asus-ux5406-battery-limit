@@ -19,11 +19,13 @@ module calls the firmware directly, with the same EC command the BIOS uses.
 | Version | Built | Tested on hardware |
 |---------|-------|--------------------|
 | 1.0.0   | yes   | 80% set, EC reads back `50 2c 05` |
-| 1.1.2   | yes (7.3.3 clang, 6.18 LTS gcc) | set/readback for 60/80/100, invalid values rejected, limit survives s2idle suspend (with asusd set to 80), charging stops at 80% |
+| 1.1.2   | yes (7.3.3–7.4-rc3 clang, 6.18 LTS gcc) | set/readback for 60/80/100, invalid values rejected, limit survives s2idle suspend (with asusd set to 80), charging stops at 80% |
 
 Tested on hardware: charging stops at 80%, the limit survives suspend and
 hibernate, and the module auto-loads on the `linux-cachyos-bmq` fallback kernel.
-DKMS rebuilt the module automatically on a kernel upgrade (7.3.3 -> 7.3.4).
+DKMS rebuilt the module automatically across kernel upgrades (7.3.3 -> 7.3.4 ->
+7.4.0-rc3); verified on 7.4.0-rc3 that mainline `asus-wmi` still does not
+handle the `DSTS(0x00120057)` buffer return natively.
 The `linux-cachyos-lts` kernel does not boot on this laptop (cause not verified),
 so it is not used. See [docs/TESTING.md](docs/TESTING.md).
 
